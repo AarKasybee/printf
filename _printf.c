@@ -28,8 +28,7 @@ int _printf(const char *format, ...)
 					num_char++;
 					break;
 				case 's':
-					puts(va_arg(arg_list, char *));
-					num_char++;
+					num_char += fputs(va_arg(arg_list, char *), stdout);
 					break;
 				default:
 					putchar(*format);
