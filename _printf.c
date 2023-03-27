@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
-
+#include <ctype.h>
+#include "my_funcs.h"
 /**
  * _printf - Printf look-alike function
  * @format: input format
@@ -12,35 +13,80 @@
 int _printf(const char *format, ...)
 {
 	int num_char = 0;
+	int i = 0;
+	int n;
+	int len, m;
 	va_list arg_list;
+	char *str;
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(arg_list, format);
-	while (*format)
+	while (format[i] != '\0')
 	{
-		if (*format == '%')
+		if (format[i] == '%' && format[i + 1] == 'c')
 		{
-			switch (*(++format))
+			putchar(va_arg(arg_list, int));
+			num_char++;
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == 's')
+		{
+			fputs(va_arg(arg_list, char *), stdout);
+			num_char += strlen(va_arg(arg_list, char *));
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] == 'd')
+		{
+			n = va_arg(arg_list, int);
+			str = malloc(12 * sizeof(char));
+			if (str == NULL)
 			{
-				case 'c':
-					putchar(va_arg(arg_list, int));
-					num_char++;
-					break;
-				case 's':
-					num_char += fputs(va_arg(arg_list, char *), stdout);
-					break;
-				default:
-					putchar(*format);
-					num_char++;
+				exit(0);
 			}
+			str[strlen(str)] = '\0';
+			len = strlen(str);
+			m = 0;
+			int_to_str(n, str);
+			len = strlen(str);
+			while (m < len)
+			{
+				putchar(str[m]);
+				m++;
+			}
+			num_char += len;
+			i += 2;
+			free(str);
+		}
+		else if (format[i] == '%' && format[i + 1] == 'i')
+		{
+			n = va_arg(arg_list, int);
+			str = malloc(12 * sizeof(char));
+			if (str == NULL)
+			{
+				exit(0);
+			}
+			str[strlen(str)] = '\0';
+			len = strlen(str);
+			m = 0;
+			int_to_str(n, str);
+			len = strlen(str);
+			while (m < len)
+			{
+				putchar(str[m]);
+				m++;
+			}
+			num_char += len;
+			i += 2;
+			free(str);
 		}
 		else
 		{
-			putchar(*format);
+			putchar(format[i]);
+			num_char++;
+			i++;
 		}
-		format++;
 	}
 	va_end(arg_list);
 	return (num_char);
