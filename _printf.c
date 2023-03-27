@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 
 /**
  * _printf - Printf look-alike function
@@ -29,6 +30,10 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					num_char += fputs(va_arg(arg_list, char *), stdout);
+					break;
+				case 'd':
+					printf("%d", va_arg(arg_list, int));
+					num_char++;
 					break;
 				default:
 					putchar(*format);
