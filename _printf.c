@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(arg_list, format);
-	while (*format && format != NULL)
+	while (*format)
 	{
 		if (*format == '%')
 		{
@@ -30,10 +30,6 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					num_char += fputs(va_arg(arg_list, char *), stdout);
-					break;
-				case 'd':
-					printf("%d", va_arg(arg_list, int));
-					num_char++;
 					break;
 				default:
 					putchar(*format);
