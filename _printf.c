@@ -6,7 +6,7 @@
 /**
  * _printf - Printf look-alike function
  * @format: input format
- * Return: the number of characters printed 
+ * Return: the number of characters printed
  */
 int _printf(const char *format, ...)
 {
