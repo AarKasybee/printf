@@ -45,6 +45,11 @@ va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
 
+void int_to_str(int num, char *str);
+int print_integer(va_list arg_list);
+int print_s(va_list s);
+int print_c(va_list a);
+
 /* Funtions to print chars and strings */
 int print_char(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
