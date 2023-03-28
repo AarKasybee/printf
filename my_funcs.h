@@ -6,4 +6,5 @@ int print_s(va_list s);
 int print_c(va_list a);
 int _putchar(char c);
 void _puts(char *str);
+int _strlen(char *s);
 #endif/*MY_FUNCS_H*/
