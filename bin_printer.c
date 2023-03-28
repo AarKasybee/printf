@@ -28,12 +28,12 @@ int bin_printer(char *s)
 		{
 			zflag = 1;
 		}
-		putchar(*s++);
+		_putchar(*s++);
 		len_s++;
 	}
 	if (count == len_s)
 	{
-		putchar('0');
+		_putchar('0');
 		len_s++;
 	}
 	return (len_s);

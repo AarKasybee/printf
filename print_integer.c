@@ -28,10 +28,9 @@ int print_integer(va_list arg_list)
 	m = 0;
 	while (m < len)
 	{
-		putchar(str[m]);
+		_putchar(str[m]);
 		m++;
 	}
 	free(str);
 	return (len);
 }
-

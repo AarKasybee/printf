@@ -18,7 +18,7 @@ int print_s(va_list s)
 
 	while (arg_str && *arg_str)
 	{
-		putchar(*arg_str++);
+		_putchar(*arg_str++);
 		len_s++;
 	}
 	return (len_s);
