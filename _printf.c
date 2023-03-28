@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <ctype.h>
 #include "my_funcs.h"
+
 /**
  * _printf - Printf look-alike function
  * @format: input format
@@ -12,75 +13,33 @@
  */
 int _printf(const char *format, ...)
 {
-	int num_char = 0;
-	int i = 0;
-	int n;
-	int len, m;
+	int num_char = 0, i = 0;
 	va_list arg_list;
-	char *str;
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(arg_list, format);
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%' && format[i + 1] == 'c')
 		{
-			putchar(va_arg(arg_list, int));
-			num_char++;
+			num_char += print_c(arg_list);
 			i += 2;
 		}
 		else if (format[i] == '%' && format[i + 1] == 's')
 		{
-			char *arg_str = va_arg(arg_list, char *);
-			fputs(arg_str, stdout);
-			num_char += strlen(arg_str);
+			num_char += print_s(arg_list);
 			i += 2;
 		}
 		else if (format[i] == '%' && format[i + 1] == 'd')
 		{
-			n = va_arg(arg_list, int);
-			str = malloc(12 * sizeof(char));
-			if (str == NULL)
-			{
-				exit(0);
-			}
-			str[strlen(str)] = '\0';
-			len = strlen(str);
-			m = 0;
-			int_to_str(n, str);
-			len = strlen(str);
-			while (m < len)
-			{
-				putchar(str[m]);
-				m++;
-			}
-			num_char += len;
+			num_char += print_integer(arg_list);
 			i += 2;
-			free(str);
 		}
 		else if (format[i] == '%' && format[i + 1] == 'i')
 		{
-			n = va_arg(arg_list, int);
-			str = malloc(12 * sizeof(char));
-			if (str == NULL)
-			{
-				exit(0);
-			}
-			str[strlen(str)] = '\0';
-			len = strlen(str);
-			m = 0;
-			int_to_str(n, str);
-			len = strlen(str);
-			while (m < len)
-			{
-				putchar(str[m]);
-				m++;
-			}
-			num_char += len;
+			num_char += print_integer(arg_list);
 			i += 2;
-			free(str);
 		}
 		else
 		{
