@@ -22,9 +22,9 @@ int print_integer(va_list arg_list)
 	{
 		exit(EXIT_FAILURE);
 	}
-	str[strlen(str)] = '\0';
+	str[_strlen(str)] = '\0';
 	int_to_str(n, str);
-	len = strlen(str);
+	len = _strlen(str);
 	m = 0;
 	while (m < len)
 	{
