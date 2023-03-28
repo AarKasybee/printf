@@ -43,8 +43,12 @@ int _printf(const char *format, ...)
 		}
 		else if (format[i] == '%' && format[i + 1] == 'b')
 		{
-			to_bin(format[i]);
-			num_char++;
+			unsigned int num = va_arg(arg_list, unsigned int);
+			char *binary = to_bin(num);
+
+			print_s(binary);
+			num_char += strlen(binary);
+			free(binary);
 			i += 2;
 		}
 		else
