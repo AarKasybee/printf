@@ -10,4 +10,5 @@ void _puts(char *str);
 int _strlen(char *s);
 void rev_string(char *s);
 char *to_bin(unsigned int num);
+int bin_printer(va_list s);
 #endif/*MY_FUNCS_H*/

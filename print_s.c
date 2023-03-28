@@ -14,9 +14,12 @@
 int print_s(va_list s)
 {
 	char *arg_str = va_arg(s, char *);
-	int len_s;
+	int len_s = 0;
 
-	fputs(arg_str, stdout);
-	len_s = _strlen(arg_str);
+	while (arg_str && *arg_str)
+	{
+		putchar(*arg_str++);
+		len_s++;
+	}
 	return (len_s);
 }
