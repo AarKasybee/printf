@@ -14,15 +14,26 @@
  */
 char *to_bin(unsigned int num)
 {
-	int len = sizeof(unsigned int) * 8;
-	char *binary = malloc(len + 1);
+	int num_bits = 0;
+	unsigned int mask = ~0;
 	int i;
+	char *binary = malloc(8 * sizeof(char));
 
-	for (i = len - 1; i >= 0; i--)
+	while (mask != 0)
+	{
+		if ((num & mask) == 0)
+		{
+			break;
+		}
+		num_bits++;
+		mask <<= 1;
+	}
+	binary = realloc(binary, num_bits + 1);
+	for (i = num_bits - 1; i >= 0; i--)
 	{
 		binary[i] = (num & 1) + '0';
 		num >>= 1;
 	}
-	binary[len] = '\0';
-	return binary;
+	binary[num_bits] = '\0';
+	return (binary);
 }

@@ -12,28 +12,29 @@
  * @s: List of arguments from va_start
  * Return: The number of characters printed
  */
-int bin_printer(va_list s)
+int bin_printer(char *s)
 {
-	char *arg_str = va_arg(s, char *);
-	unsigned int arg_uint = va_arg(s, unsigned int);
-	int len_s;
+	int len_s = 0;
+	int count = 0;
+	int zflag = 0;
 
-	if (arg_str == NULL)
+	while (s && *s)
 	{
-		return (-1);
+		if (zflag == 0 && *s != '1')
+		{
+			count++;
+		}
+		else
+		{
+			zflag = 1;
+		}
+		putchar(*s++);
+		len_s++;
 	}
-	if (strcmp(arg_str, "%b") == 0)
+	if (count == len_s)
 	{
-		char *binary = to_bin(arg_uint);
-
-		fputs(binary, stdout);
-		len_s = _strlen(binary);
-		free(binary);
-	}
-	else
-	{
-		fputs(arg_str, stdout);
-		len_s = _strlen(arg_str);
+		putchar('0');
+		len_s++;
 	}
 	return (len_s);
 }
