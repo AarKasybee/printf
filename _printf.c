@@ -33,8 +33,9 @@ int _printf(const char *format, ...)
 		}
 		else if (format[i] == '%' && format[i + 1] == 's')
 		{
-			fputs(va_arg(arg_list, char *), stdout);
-			num_char += strlen(va_arg(arg_list, char *));
+			char *arg_str = va_arg(arg_list, char *);
+			fputs(arg_str, stdout);
+			num_char += strlen(arg_str);
 			i += 2;
 		}
 		else if (format[i] == '%' && format[i + 1] == 'd')
