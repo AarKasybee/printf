@@ -9,19 +9,19 @@
  * @str: output str
  */
 
-void int_to_str(int num, char* str)
+void int_to_str(int num, char *str)
 {
 	int i = 0;
 	int sign = 0;
 	int j, k;
+	char temp;
 
 	if (num < 0)
 	{
 		num = -num;
 		sign = 1;
 	}
-	do
-	{
+	do {
 		str[i++] = num % 10 + '0';
 		num /= 10;
 	} while (num);
@@ -33,7 +33,7 @@ void int_to_str(int num, char* str)
 	/* Reverse the string*/
 	for (j = 0, k = i - 1; j < k; j++, k--)
 	{
-		char temp = str[j];
+		temp = str[j];
 		str[j] = str[k];
 		str[k] = temp;
 	}
