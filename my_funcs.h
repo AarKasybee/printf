@@ -5,4 +5,5 @@ int print_integer(va_list arg_list);
 int print_s(va_list s);
 int print_c(va_list a);
 int _putchar(char c);
+void _puts(char *str);
 #endif/*MY_FUNCS_H*/
