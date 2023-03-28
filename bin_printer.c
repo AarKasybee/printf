@@ -18,6 +18,10 @@ int bin_printer(va_list s)
 	unsigned int arg_uint = va_arg(s, unsigned int);
 	int len_s;
 
+	if (arg_str == NULL)
+	{
+		return (-1);
+	}
 	if (strcmp(arg_str, "%b") == 0)
 	{
 		char *binary = to_bin(arg_uint);
