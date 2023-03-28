@@ -16,7 +16,7 @@ int print_s(va_list s)
 	char *arg_str = va_arg(s, char *);
 	int len_s;
 
-	puts(arg_str);
+	fputs(arg_str, stdout);
 	len_s = strlen(arg_str);
 	return (len_s);
 }
