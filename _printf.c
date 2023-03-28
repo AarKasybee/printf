@@ -41,6 +41,10 @@ int _printf(const char *format, ...)
 			num_char += print_integer(arg_list);
 			i += 2;
 		}
+		else if (format[i] == '%' && format[i + 1] == 'b')
+		{
+			i += 2;
+		}
 		else
 		{
 			putchar(format[i]);
