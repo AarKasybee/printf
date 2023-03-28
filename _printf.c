@@ -43,6 +43,8 @@ int _printf(const char *format, ...)
 		}
 		else if (format[i] == '%' && format[i + 1] == 'b')
 		{
+			to_bin(format[i]);
+			num_char++;
 			i += 2;
 		}
 		else

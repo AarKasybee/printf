@@ -8,4 +8,5 @@ int _putchar(char c);
 void _puts(char *str);
 int _strlen(char *s);
 void rev_string(char *s);
+char *to_bin(unsigned int num);
 #endif/*MY_FUNCS_H*/
