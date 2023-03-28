@@ -28,7 +28,7 @@ int print_integer(va_list arg_list)
 	m = 0;
 	while (m < len)
 	{
-		_putchar(str[m]);
+		putchar(str[m]);
 		m++;
 	}
 	free(str);
