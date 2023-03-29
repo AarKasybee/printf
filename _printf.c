@@ -49,6 +49,11 @@ int _printf(const char *format, ...)
 			free(binary);
 			i += 2;
 		}
+		else if (format[i] == '%' && format[i + 1] == 'u')
+		{
+			 num_char += print_uint(arg_list);
+			 i += 2;
+		}
 		else
 		{
 			_putchar(format[i]);
