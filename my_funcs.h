@@ -12,4 +12,6 @@ void rev_string(char *s);
 char *to_bin(unsigned int num);
 int bin_printer(char *s);
 int print_uint(va_list arg_list);
+int print_oct(va_list arg_list);
+char *int_to_oct(va_list arg_list);
 #endif/*MY_FUNCS_H*/

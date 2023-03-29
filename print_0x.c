@@ -7,11 +7,11 @@
 #include "my_funcs.h"
 
 /**
- * print_integer - Prints an integer to stdout
+ * print_0x - Prints an integer to stdout
  * @arg_list: List of arguments from va_start
  * Return: The number of characters printed
  */
-int print_integer(va_list arg_list)
+int print_0x(va_list arg_list)
 {
 	char *str;
 	int n, len, m;
@@ -22,7 +22,7 @@ int print_integer(va_list arg_list)
 	{
 		exit(EXIT_FAILURE);
 	}
-	/*str[_strlen(str)] = '\0';*/
+	str[_strlen(str)] = '\0';
 	int_to_str(n, str);
 	len = _strlen(str);
 	m = 0;
